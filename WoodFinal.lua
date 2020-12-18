@@ -112,7 +112,7 @@ function Fuel()
 			error("Fuel reserves are depleted")
 		end
 		turtle.refuel(64)
-		turtle.turnRight()
+		turtle.turnLeft()
 		turtle.select(1)
 	end
 end
