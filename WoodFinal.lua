@@ -1,20 +1,20 @@
---Global Variables-------------------------------
+--variable initialization--------------
 doLoop = true
 
 distance = 1
 number = 1
 
-tColumns = 5           --Amount of tree columns
-tRows = 6         --Amount of treen rows
+SlotNum = 1
 
 NextRowNum = -1            --Which column, out of "tColumns", Will the bot be on next
+--config-------------------------------
+tColumns = 5           --Set this to the number of tree columns your farm has
+tRows = 6              --Set this to the number of tree rows your farm has
 
-MaxSaps = tColumns * tRows    --max amount of saplings that could be planted in a single iteration
-
-SlotNum = 1
--------------------------------------------------
-
-function Go(distance)
+MaxSaps = tColumns * tRows    --max amount of saplings that could be planted in a single run
+------functions------------------------
+function Go(distance)                             --this moves the turtle forward [distance] times.
+	print("moving "..distance." blocks forward")  --Good for moving without repeating turtle.forward 20 times
 	for i = 1, distance, 1 do
 		while turtle.forward() == false do
 			sleep(1)
@@ -22,26 +22,26 @@ function Go(distance)
 	end
 end
 
-function GetAboveBlockId()
+function GetAboveBlockId()                    --returns the block ID of the block above the turtle
 	BlockState, BlockName = turtle.inspectUp()
 	
 	return BlockName.name
 end
 
-function GetFrontBlockId()
+function GetFrontBlockId()                    --returns the block ID of the block in front the turtle
 	BlockState, BlockName = turtle.inspect()
 	
 	return BlockName.name
 end
 
-function GetItemID()
-	local ItemData = turtle.getItemDetail()
+function GetItemID()                          --returns the item ID of the item in the item slot
+	local ItemData = turtle.getItemDetail()   --selected by the turtle
 	
 	return ItemData.name
 end
 
-function DetectLeaves(number)
-	for i = 1, number, 1 do
+function DetectLeaves(number)                 --same as Go() except it checks for leaves in front of the turtle
+	for i = 1, number, 1 do                   --and breaks them to clear a path
 	
 		if GetFrontBlockId() == "minecraft:leaves" or GetFrontBlockId() == "ic2:leaves" then
 			turtle.dig()
@@ -80,7 +80,7 @@ function HarvestTree() -- This function instructs the
 end
 
 function HarvestRow()                     -- This function instructs the bot to harvest the entire row of 
-	for i = 1, ((tRows * 3) - 2), 1 do    -- trees when by calling HarvestTree() whenever it detects a tree
+	for i = 1, ((tRows * 3) - 2), 1 do    -- trees by calling HarvestTree() whenever it detects a tree
 		if turtle.detect() == true then
 			DetectLeaves(1)
 		else
@@ -89,23 +89,23 @@ function HarvestRow()                     -- This function instructs the bot to 
 	end
 end
 
-function NextRowNumLeft()
+function NextRowNumLeft()     --the turtle prepares to sweep the next row of trees to it's left
 	DetectLeaves(1)
 	turtle.turnLeft()
 	DetectLeaves(3)
 	turtle.turnLeft()	
 end
 
-function NextRowNumRight()
+function NextRowNumRight()    --the turtle prepares to sweep the next row of trees to it's right
 	DetectLeaves(1)
 	turtle.turnRight()
 	DetectLeaves(3)
 	turtle.turnRight()
 end
 
-function Fuel()
-	if turtle.getFuelLevel() < 500 then
-		turtle.select(16)
+function Fuel()                              --this function checks fuel levels. If there is 
+	if turtle.getFuelLevel() < 500 then      --less than 500 fuel it will attempt to grab a stack
+		turtle.select(16)                    --of fuel stuff from a nearby chest and use it
 		turtle.turnRight()
 		if turtle.suck(64) == false then
 			turtle.turnLeft()
@@ -117,8 +117,8 @@ function Fuel()
 	end
 end
 
-function EmptyInv()
-	for i = 1, 16, 1 do
+function EmptyInv()           --this function deposits the entire turtle 
+	for i = 1, 16, 1 do       --inventory below the turtle
         turtle.select(i)
         turtle.dropDown()
     end
@@ -126,13 +126,17 @@ function EmptyInv()
 end
 ------------------------functions end and commands start here---------------------------------
 while doLoop == true do
+	print("Initializing")
 	term.clear()
 	NextRowNum = 1
 	SlotNum = 1
 	
+	print("Checking fuel levels")
 	Fuel()
+	print("fuel levels nominal")
 	Go(1)
 	turtle.turnRight()
+	print("getting saplings")
 	turtle.suck(MaxSaps)
 	if turtle.getItemCount(1) < MaxSaps then
 		turtle.turnLeft()
@@ -166,6 +170,7 @@ while doLoop == true do
 		end
 	end
 	
+	print("going home")
 	Go((tColumns - 1) * 3)
 
 	turtle.turnLeft()
@@ -173,6 +178,7 @@ while doLoop == true do
 	print("Depositing Inventory")
 	EmptyInv()
 	
+	term.clear()
 	print("Waiting for trees to grow")
 	sleep(1500)
 end
