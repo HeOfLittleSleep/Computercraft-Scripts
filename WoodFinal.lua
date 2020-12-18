@@ -1,15 +1,15 @@
 --Global Variables-------------------------------
-cont = "y"
+doL = "y"
 
 distance = 1
 number = 1
 
-VerticalRows = 5           --Amount of vertical rows of trees
-HorizontalRows = 6         --Amount of horizontal rows of trees
+tColumns = 5           --Amount of tree columns
+tRows = 6         --Amount of treen rows
 
-NextRowNum = -1            --Which row, out of "VerticalRows", Will the bot be on next
+NextRowNum = -1            --Which column, out of "tColumns", Will the bot be on next
 
-MaxSaps = VerticalRows * HorizontalRows    --max amount of saplings that could be planted in a single iteration
+MaxSaps = tColumns * tRows    --max amount of saplings that could be planted in a single iteration
 
 SlotNum = 1
 -------------------------------------------------
@@ -80,7 +80,7 @@ function HarvestTree() -- This function instructs the
 end
 
 function HarvestRow()                              -- This function instructs the bot to harvest the entire row of 
-	for i = 1, ((HorizontalRows * 3) - 2), 1 do    -- trees when by calling HarvestTree() whenever it detects a tree
+	for i = 1, ((tRows * 3) - 2), 1 do    -- trees when by calling HarvestTree() whenever it detects a tree
 		if turtle.detect() == true then
 			DetectLeaves(1)
 		else
@@ -116,7 +116,7 @@ function Fuel()
 	end
 end
 ------------------------functions end and commands start here---------------------------------
-while cont == "y" do
+while doL == "y" do
 	--monitor.clear()
 	NextRowNum = 1
 	SlotNum = 1
@@ -133,9 +133,9 @@ while cont == "y" do
 	turtle.turnLeft()
 	DetectLeaves(3)
 
-	for i = 1, VerticalRows, 1 do
+	for i = 1, tColumns, 1 do
 		HarvestRow()
-		if NextRowNum < VerticalRows then
+		if NextRowNum < tColumns then
 			NextRowNum = (NextRowNum + 1)
 			if (NextRowNum % 2) == 0 then
 				NextRowNumLeft()
@@ -150,14 +150,14 @@ while cont == "y" do
 				turtle.turnLeft()
 				DetectLeaves(1)
 				turtle.turnLeft()
-				DetectLeaves((HorizontalRows * 3) + 2)
+				DetectLeaves((tRows * 3) + 2)
 				turtle.turnLeft()
 				Go(1)
 			end
 		end
 	end
 	
-	Go((VerticalRows - 1) * 3)
+	Go((tColumns - 1) * 3)
 
 	turtle.turnLeft()
 	print("Waiting for trees to grow")
