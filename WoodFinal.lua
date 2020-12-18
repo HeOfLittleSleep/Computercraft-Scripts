@@ -1,5 +1,5 @@
 --Global Variables-------------------------------
-doL = "y"
+doLoop = true
 
 distance = 1
 number = 1
@@ -106,9 +106,10 @@ end
 function Fuel()
 	if turtle.getFuelLevel() < 500 then
 		turtle.select(16)
-		turtle.turnLeft()
+		turtle.turnRight()
 		if turtle.suck(64) == false then
-			error("No Available Fuel")
+			turtle.turnLeft()
+			error("Fuel reserves are depleted")
 		end
 		turtle.refuel(64)
 		turtle.turnRight()
@@ -116,13 +117,13 @@ function Fuel()
 	end
 end
 ------------------------functions end and commands start here---------------------------------
-while doL == "y" do
-	--monitor.clear()
+while doLoop == true do
+	term.clear()
 	NextRowNum = 1
 	SlotNum = 1
 	
-	Go(1)
 	Fuel()
+	Go(1)
 	turtle.turnRight()
 	turtle.suck(MaxSaps)
 	if turtle.getItemCount(1) < MaxSaps then
