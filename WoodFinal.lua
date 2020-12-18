@@ -55,7 +55,7 @@ function DetectLeaves(number)
 end
 
 function HarvestTree() -- This function instructs the 
-	turtle.dig()       -- bot to chop down tree when called
+	turtle.dig()       -- bot to chop down a tree when called
 	Go(1)
 	turtle.digDown()
 	while GetItemID() ~= "minecraft:sapling" and GetItemID() ~= "ic2:sapling" do
@@ -79,7 +79,7 @@ function HarvestTree() -- This function instructs the
 	end
 end
 
-function HarvestRow()                              -- This function instructs the bot to harvest the entire row of 
+function HarvestRow()                     -- This function instructs the bot to harvest the entire row of 
 	for i = 1, ((tRows * 3) - 2), 1 do    -- trees when by calling HarvestTree() whenever it detects a tree
 		if turtle.detect() == true then
 			DetectLeaves(1)
@@ -115,6 +115,14 @@ function Fuel()
 		turtle.turnLeft()
 		turtle.select(1)
 	end
+end
+
+function EmptyInv()
+	for i = 1, 16, 1 do
+        turtle.select(i)
+        turtle.dropDown()
+    end
+    turtle.select(1)
 end
 ------------------------functions end and commands start here---------------------------------
 while doLoop == true do
@@ -161,6 +169,10 @@ while doLoop == true do
 	Go((tColumns - 1) * 3)
 
 	turtle.turnLeft()
+
+	print("Depositing Inventory")
+	EmptyInv()
+	
 	print("Waiting for trees to grow")
 	sleep(1500)
 end
