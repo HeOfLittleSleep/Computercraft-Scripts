@@ -14,7 +14,7 @@ tRows = 6              --Set this to the number of tree rows your farm has
 MaxSaps = tColumns * tRows    --max amount of saplings that could be planted in a single run
 ------functions------------------------
 function Go(distance)                             --this moves the turtle forward [distance] times.
-	print("moving "..distance." blocks forward")  --Good for moving without repeating turtle.forward 20 times
+	print("moving "..distance.." blocks forward")  --Good for moving without repeating turtle.forward 20 times
 	for i = 1, distance, 1 do
 		while turtle.forward() == false do
 			sleep(1)
