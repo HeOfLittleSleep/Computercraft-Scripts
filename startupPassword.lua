@@ -3,7 +3,7 @@ while true do
 	term.setCursorPos(1, 1)
 	print("PLEASE ENTER SECURE PASSPHRASE:")
 	
-	local input = read("x')
+	local input = read("*")
 	if input == "EnterPassswordHere" then
 		restone.setOutput("left", true)
 		restone.setOutput("right", true)
