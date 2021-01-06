@@ -6,17 +6,17 @@ while true do
 	term.clear()
 	term.setCursorPos(1, 1)
 	print("Amount of things to un-molten:")
-	local input = read()
+	local QueueNum = tonumber(read())
 
 	term.clear()
 	term.setCursorPos(1, 1)
 	print("Un-molten frequency (wait timer):")
-	local WaitTimer = read()
+	local WaitTimer = tonumber(read())
 
-	for i = 1, input, 1 do
+	for i = 1, QueueNum, 1 do
 		term.clear()
 		term.setCursorPos(1, 1)
-		print("un-moltened "..(i - 1).." out of "..input.." things")
+		print("un-moltened "..(i - 1).." out of "..QueueNum.." things")
 
 		redstone.setOutput("bottom", true)
 		sleep()
