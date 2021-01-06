@@ -6,8 +6,12 @@ while true do
 	term.clear()
 	term.setCursorPos(1, 1)
 	print("Amount of things to un-molten:")
-
 	local input = read()
+
+	term.clear()
+	term.setCursorPos(1, 1)
+	print("Un-molten frequency (wait timer):")
+	local WaitTimer = read()
 
 	for i = 1, input, 1 do
 		term.clear()
@@ -18,6 +22,6 @@ while true do
 		sleep()
 		redstone.setOutput("bottom", false)
 
-		sleep(45)   --The number in parentheses is how long the program will
-	end				--wait in seconds before pouring the next block.
+		sleep(WaitTimer)   --The number in parentheses is how long the program will
+	end				       --wait in seconds before pouring the next block.
 end
