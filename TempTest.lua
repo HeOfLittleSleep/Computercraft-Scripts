@@ -1,1 +1,1 @@
-redstone
+redstone.setOutput("left", true)
