@@ -1,11 +1,11 @@
-local QueueNum, WaitTimer = ...
-QueueNum = tonumber(QueueNum)
+local sQueue, WaitTimer = ...
+sQueue = tonumber(sQueue)
 WaitTimer = tonumber(WaitTimer)
 
-for i = 1, QueueNum, 1 do
+for i = 1, sQueue, 1 do
 	term.clear()
 	term.setCursorPos(1, 1)
-	print("un-moltened "..(i - 1).." out of "..QueueNum.." things")
+	print("un-moltened "..(i - 1).." out of "..sQueue.." things")
 
 	redstone.setOutput("bottom", true)
 	sleep()
@@ -16,4 +16,4 @@ end
 
 term.clear()
 term.setCursorPos(1, 1)
-print("un-moltened "..QueueNum.." out of "..QueueNum.." things")
+print("un-moltened "..sQueue.." out of "..sQueue.." things")

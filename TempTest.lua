@@ -1,1 +1,4 @@
-shell.run("SA-SlaveNode", "6", "2")
+local sQueue = 6
+local WaitTimer = 2
+
+rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer)

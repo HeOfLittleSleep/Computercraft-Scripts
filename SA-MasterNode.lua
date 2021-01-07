@@ -1,6 +1,11 @@
---This program is designed to automate the process of smelting with tinker's
---construct. Proper setup has the computer above the smeltery spout and a 
---hopper underneath the casting bin to pull cooled blocks out of it. 
+term.clear()
+term.setCursorPos(10, 8)
+print("How many slave nodes are there?")
+term.setCursorPos(24, 10)
+print("[   ]")
+
+term.setCursorPos(25, 10)
+local sNodes = tonumber(read())
 
 while true do
 	term.clear()
@@ -10,7 +15,7 @@ while true do
 	print("[   ]")
 
 	term.setCursorPos(25, 10)
-	local QueueNum = tonumber(read())
+	local QueueTotal = tonumber(read())
 
 	term.clear()
 	term.setCursorPos(9, 8)
@@ -21,10 +26,18 @@ while true do
 	term.setCursorPos(25, 10)
 	local WaitTimer = tonumber(read())
 
-	for i = 1, QueueNum, 1 do
+	local sQueue = math.floor(QueueTotal / (sNodes + 1))
+	local mQueue = sQueue * (sNodes + 1)
+
+	rednet.open("top")
+	rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer)
+	rednet.close("top")
+
+
+	for i = 1, mQueue, 1 do
 		term.clear()
 		term.setCursorPos(1, 1)
-		print("un-moltened "..(i - 1).." out of "..QueueNum.." things")
+		print("un-moltened "..(i - 1).." out of "..mQueue.." things")
 
 		redstone.setOutput("bottom", true)
 		sleep()
