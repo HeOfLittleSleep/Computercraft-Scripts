@@ -1,5 +1,1 @@
-shell.run("smelteryautomation")
-sleep(1)
-print("33\n")
-sleep(1)
-print("4\n")
+shell.run("SA-SlaveNode", "6", "2")
