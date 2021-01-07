@@ -1,3 +1,5 @@
-redstone.setOutput("left", true)
-term.clear()
-term.setCursPos(3,7)
+shell.run("smelteryautomation")
+sleep(1)
+print("33\n")
+sleep(1)
+print("4\n")
