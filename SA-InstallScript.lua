@@ -3,5 +3,11 @@ term.setCursorPos(1, 1)
 print("Is this terminal the master or slave node?\n(master/slave)")
 local input = read()
 
-term.clear()
-print('computer id is "'..os.getComputerID()..'"')
+if input == master then
+	shell.run("pastebin get xyzzy startup.lua")
+else if input == slave then
+	shell.run("pastebin get xyzzy startup.lua")
+	shell.run("pastebin get xyzzy SA-SlaveNode.lua")
+else
+	error("Bad Input. please run the program again.")
+end
