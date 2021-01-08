@@ -3,9 +3,9 @@ term.setCursorPos(1, 1)
 print("Is this terminal the master or slave node?\n(master/slave)")
 local input = read()
 
-if input == master then
+if input == "master" then
 	shell.run("pastebin get GjcRHtyC startup.lua")
-else if input == slave then
+elseif input == "slave" then
 	shell.run("pastebin get bXpAsQL6 startup.lua")
 	shell.run("pastebin get GZYKvk0W SA-SlaveNode.lua")
 else
