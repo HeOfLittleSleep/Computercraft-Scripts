@@ -27,7 +27,7 @@ while true do
 	local WaitTimer = tonumber(read())
 
 	local sQueue = math.floor(QueueTotal / (sNodes + 1))
-	local mQueue = sQueue * (sNodes + 1)
+	local mQueue = QueueTotal - (sQueue * (sNodes + 1)) + sQueue
 
 	rednet.open("top")
 	rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer)
