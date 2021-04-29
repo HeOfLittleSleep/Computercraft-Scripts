@@ -1,0 +1,5 @@
+rednet.open("back")
+rednet.send(78, "jesus time")
+print("Christ is fuckin lit yo")
+sleep(3)
+rednet.close()
