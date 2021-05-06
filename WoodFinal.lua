@@ -43,11 +43,11 @@ end
 function DetectLeaves(number)                 --same as Go() except it checks for leaves in front of the turtle
 	for i = 1, number, 1 do                   --and breaks them to clear a path
 	
-		if GetFrontBlockId() == "minecraft:leaves" or GetFrontBlockId() == "ic2:leaves" then
+		if GetFrontBlockId() == "minecraft:log" or GetFrontBlockId() == "ic2:rubber_wood" then
+			HarvestTree()
+		elseif turtle.detect() == true then
 			turtle.dig()
 			Go(1)
-		elseif turtle.detect() == true then
-			HarvestTree()
 		else
 			Go(1)
 		end
