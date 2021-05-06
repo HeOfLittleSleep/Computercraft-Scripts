@@ -5,10 +5,10 @@
 local tArgs = { ... }
 
 hostname = tArgs[1]
-if tArgs[1] == nil then
+if tArgs[2] == nil then
 	messageToSend = "toggle"
 else
-	messageToSend = tArgs[1]
+	messageToSend = tArgs[2]
 end
 
 rednet.open("back")
@@ -16,5 +16,9 @@ rednet.host("RPC", "PC-Hostname")  --be sure to change "PC-Hostname" to whatever
                                    --this computer's hostname to be
 rednet.send(rednet.lookup(hostname), messageToSend, "RPC")
 
-id, rMessage,  = rednet.receive("RPC")
-print(rMessage)
+id, rMessage,  = rednet.receive("RPC", 5)
+if rMessage == nil then
+	print("never got response from remote host")
+else
+	print(rMessage)
+end
