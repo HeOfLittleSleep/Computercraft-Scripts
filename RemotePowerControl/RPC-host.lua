@@ -8,12 +8,10 @@ while true do
 	if msg == "0" then  -- set power to off
 		redstone.setOutput("top", false)
 		rednet.send(id, "redstone output was turned off")
-	end
-	if msg == "1" then  --set power to on
+	elseif msg == "1" then  --set power to on
 		redstone.setOutput("top", true)
 		rednet.send(id, "redstone output was turned on")
-	end
-	if msg == "toggle" then  -- toggle power status
+	elseif msg == "toggle" then  -- toggle power status
 		if redstone.getOutput("top") == false then
 			redstone.setOutput("top", true)
 		rednet.send(id, "redstone output was turned on")
@@ -21,8 +19,9 @@ while true do
 			redstone.setOutput("top", false)
 		rednet.send(id, "redstone output was turned off")
 		end
-	end
-	if msg == "q" then  -- query power status
+	elseif msg == "q" then  -- query power status
 		rednet.send(id, "redstone status is: "..redstone.getOutput())
+	else
+		rednet.send(id, "invalid input received")
 	end
 end
