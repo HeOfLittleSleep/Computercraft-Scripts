@@ -1,5 +1,6 @@
 rednet.open("top")  --replace top with whatever side the modem is on
-rednet.host("RPC", "PC-Hostname")
+rednet.host("RPC", "PC-Hostname")  --be sure to change "PC-Hostname" to whatever you want
+                                   --this computer's hostname to be
 
 while true do
 	id, msg = rednet.receive()
