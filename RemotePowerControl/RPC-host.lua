@@ -2,7 +2,7 @@
 --change the redstone output accordingly. works best if you name the file startup.lua.
 
 rednet.open("top")  --replace top with whatever side the modem is on
-rednet.host("RPC", "PC-Hostname")  --be sure to change "PC-Hostname" to whatever you want
+rednet.host("RPC", "host-pc")  --be sure to change "host-pc" to whatever you want
                                    --this computer's hostname to be
 
 while true do
@@ -13,20 +13,20 @@ while true do
 	--It also sneds a confirmation back to the sender and prints the completed
 	--operation and the id of the computer that sent the command
 	if msg == "0" then  -- set power to off
-		redstone.setOutput("top", false)
+		redstone.setOutput("right", false)
 		rednet.send(id, "redstone output has been turned off")
 		print("redstone output has been turned off by client: "..id)
 	elseif msg == "1" then  --set power to on
-		redstone.setOutput("top", true)
+		redstone.setOutput("right", true)
 		rednet.send(id, "redstone output has been turned on")
 		print("redstone output has been turned on by client: "..id)
 	elseif msg == "toggle" then  -- toggle power status
-		if redstone.getOutput("top") == false then
-			redstone.setOutput("top", true)
+		if redstone.getOutput("right") == false then
+			redstone.setOutput("right", true)
 			rednet.send(id, "redstone output has been turned on")
 			print("redstone output has been turned on by client: "..id)
 		else
-			redstone.setOutput("top", false)
+			redstone.setOutput("right", false)
 			rednet.send(id, "redstone output has been turned off")
 			print("redstone output has been turned off by client: "..id)
 		end
