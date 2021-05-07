@@ -17,7 +17,7 @@ rednet.host("RPC", "PC-Hostname")  --be sure to change "PC-Hostname" to whatever
                                    --this computer's hostname to be
 rednet.send(rednet.lookup(hostname), messageToSend, "RPC")
 
-id, rMessage, = rednet.receive("RPC", 5) --waits for confirmation from host PC. returns
+id, rMessage = rednet.receive("RPC", 5) --waits for confirmation from host PC. returns
 if rMessage == nil then					 --an error message if no message is received after 5 seconds
 	print("never got response from remote host")
 else
