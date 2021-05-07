@@ -6,7 +6,6 @@
 local tArgs = { ... }
 
 hostname = tArgs[1]   --sets hostname to first parameter
---hostId = rednet.lookup("RPC", hostname)
 if tArgs[2] == nil then  --sets message to second parameter, or "toggle" if none is given
 	messageToSend = "toggle"
 else
