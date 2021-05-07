@@ -31,7 +31,8 @@ while true do
 			print("redstone output has been turned off by client: "..id)
 		end
 	elseif msg == "q" then  -- query power status
-		rednet.send(id, "redstone status is: "..redstone.getOutput())
+		print(toString(redstone.getOutput("right")))
+		rednet.send(id, "redstone status is: "..toString(redstone.getOutput("right")))
 		print("status queried by client: "..id)
 	else
 		rednet.send(id, "invalid input received")
