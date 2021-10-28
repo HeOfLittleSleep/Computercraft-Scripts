@@ -21,8 +21,8 @@ while true do
 		print("Un-molten frequency (wait timer):")
 		term.setCursorPos(24, 10)
 		print("[   ]")
+		
 		term.setCursorPos(25, 10)
-
 		local WaitTimer = tonumber(read())
 
 		for i = 1, QueueNum, 1 do
