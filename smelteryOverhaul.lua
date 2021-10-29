@@ -60,12 +60,11 @@ while true do
 
 			if sNodes > 0 then
 				rednet.open("top")
-				eednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer)
+				rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer)
 				rednet.close("top")
 			end
 
 			for i = 1, mQueue, 1 do
-				sleep(3)
 				term.clear()
 				term.setCursorPos(1, 1)
 				print("un-moltened "..(i - 1).." out of "..mQueue.." things")
