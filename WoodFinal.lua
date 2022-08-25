@@ -126,8 +126,8 @@ function EmptyInv()           --this function deposits the entire turtle
 end
 ------------------------functions end and commands start here---------------------------------
 while doLoop == true do
-	print("Initializing")
 	term.clear()
+	print("Initializing")
 	NextRowNum = 1
 	SlotNum = 1
 	
