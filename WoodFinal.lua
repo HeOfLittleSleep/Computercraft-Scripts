@@ -103,15 +103,17 @@ function NextRowNumRight()    --the turtle prepares to sweep the next row of tre
 	turtle.turnRight()
 end
 
-function Fuel()                              --this function checks fuel levels. If there is 
-	if turtle.getFuelLevel() < 500 then      --less than 500 fuel it will attempt to grab a stack
-		turtle.select(16)                    --of fuel stuff from a nearby chest and use it
+function Fuel()                              --this function checks fuel levels. If there is less than 500 fuel it will
+	if turtle.getFuelLevel() < 500 then      --attempt to grab a stack of fuel stuff from a nearby chest and use it
+		print("Rover fuel is low. Attempting to refuel with reserves")
+		turtle.select(16)
 		turtle.turnRight()
 		if turtle.suck(64) == false then
 			turtle.turnLeft()
 			error("Fuel reserves are depleted")
 		end
 		turtle.refuel(64)
+		print("refuel successful!")
 		turtle.turnLeft()
 		turtle.select(1)
 	end
