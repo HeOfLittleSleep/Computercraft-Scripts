@@ -20,6 +20,8 @@ rednet.send(rednet.lookup("RPC", hostname), messageToSend, "RPC")
 id, rMessage, protocol = rednet.receive("RPC") --waits for confirmation from host PC. returns
 if rMessage == nil then					--an error message if no message is received after 5 seconds
 	print("never got response from remote host")
+	rednet.close("back")
 else
 	print(rMessage)
+	rednet.close("back")
 end
