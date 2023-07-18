@@ -6,7 +6,7 @@
 local tArgs = { ... } --collect parameters from run command
 
 if tArgs[1] == nil then  --sets hostname to first parameter if first parameter is not nil
-	error('Error:  missing hostname parameter.\nPlease run again as "script.lua [remote hostname]"')
+	error('Error:  missing hostname parameter. Please run again like so:\n"[script].lua [remote hostname] [message]"')
 else
 	hostname = tArgs[1]
 end
