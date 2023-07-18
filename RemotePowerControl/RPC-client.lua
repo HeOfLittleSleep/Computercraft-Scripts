@@ -17,7 +17,7 @@ else
 	messageToSend = tArgs[2]
 end
 
-rednet.open("back")
+rednet.open("back")  --change 'back' to whatever side the modem is on
 rednet.host("RPC", "client-PC")  --be sure to change "client-PC" to whatever you want
                                  --this computer's hostname to be
 if rednet.lookup("RPC", hostname) == nil then  --checks that hostname is valid
