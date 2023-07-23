@@ -50,7 +50,7 @@ function PlaceDT
 end
 
 function PlaceRow
-	for i = 1, 4, 1 do
+	for i = 1, 6, 1 do
 		GoDig(2)
 		placeDT()
 	end
