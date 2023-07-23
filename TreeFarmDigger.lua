@@ -40,6 +40,22 @@ function DigFullLayer()
 	GoDig(19)
 end
 
+function PlaceDT
+	turtle.down()
+	turtle.select(15)
+	turtle.placeDown()
+	turtle.up()
+	turtle.select(16)
+	turtle.placeDown()
+end
+
+function PlaceRow
+	for i = 1, 4, 1 do
+		GoDig(2)
+		placeDT()
+	end
+end
+
 DigFullLayer()
 turtle.turnRight()
 turtle.turnRight()
@@ -71,6 +87,32 @@ for i = 1, 19, 1 do
 	end
 end
 
-for i = 1, 3, 1 do
+for i = 1, 5, 1 do
 	turtle.up()
 end
+
+turtle.turnLeft()
+GoDig(2)
+turtle.turnLeft()
+
+PlaceRow()
+turtle.turnRight()
+GoDig(2)
+turtle.turnRight()
+
+PlaceRow()
+turtle.turnLeft()
+GoDig(2)
+turtle.turnLeft()
+
+PlaceRow()
+turtle.turnRight()
+GoDig(2)
+turtle.turnRight()
+
+PlaceRow()
+turtle.turnLeft()
+GoDig(2)
+turtle.turnLeft()
+
+PlaceRow()
