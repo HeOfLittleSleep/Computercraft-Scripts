@@ -60,7 +60,16 @@ end
 
 turtle.digDown()
 turtle.down()
-GoDig(19)
+for i = 1, 19, 1 do
+	if turtle.detect() == true then
+		turtle.dig()
+		turtle.forward()
+		turtle.digUp()
+	else
+		turtle.forward()
+		turtle.digUp()
+	end
+end
 
 for i = 1, 3, 1 do
 	turtle.up()
