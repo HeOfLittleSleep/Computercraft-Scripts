@@ -50,9 +50,9 @@ function PlaceDT()
 end
 
 function PlaceRow()
-	for i = 1, 6, 1 do
-		GoDig(2)
+	for i = 1, 5, 1 do
 		PlaceDT()
+		GoDig(3)
 	end
 end
 
@@ -95,24 +95,33 @@ turtle.turnLeft()
 GoDig(2)
 turtle.turnLeft()
 
-PlaceRow()
-turtle.turnRight()
 GoDig(2)
-turtle.turnRight()
-
 PlaceRow()
-turtle.turnLeft()
-GoDig(2)
-turtle.turnLeft()
-
-PlaceRow()
+PlaceDT()
 turtle.turnRight()
-GoDig(2)
+GoDig(3)
 turtle.turnRight()
 
 PlaceRow()
+PlaceDT()
 turtle.turnLeft()
-GoDig(2)
+GoDig(3)
 turtle.turnLeft()
 
 PlaceRow()
+PlaceDT()
+turtle.turnRight()
+GoDig(3)
+turtle.turnRight()
+
+PlaceRow()
+PlaceDT()
+turtle.turnLeft()
+GoDig(3)
+turtle.turnLeft()
+
+PlaceRow()
+PlaceDT()
+
+GoDig(3)
+print("Farm is done. do the wait and then the harvest now")
