@@ -40,7 +40,7 @@ function DigFullLayer()
 	GoDig(19)
 end
 
-function PlaceDT
+function PlaceDT()
 	turtle.down()
 	turtle.select(15)
 	turtle.placeDown()
@@ -49,10 +49,10 @@ function PlaceDT
 	turtle.placeDown()
 end
 
-function PlaceRow
+function PlaceRow()
 	for i = 1, 6, 1 do
 		GoDig(2)
-		placeDT()
+		PlaceDT()
 	end
 end
 
