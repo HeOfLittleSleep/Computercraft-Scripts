@@ -1,8 +1,19 @@
---program that will monitor and regulate a big reactor
+-- A program that will monitor the power status of an extreme reactor.
+-- It will turn the reactor off when the external battery bank is low
+-- and turn the reactor off when the internal power bank is full. It
+-- monitors the external battery bank levels by measuring it's
+-- redstone signal strength to a configured side of the computer.
+-- The program prompts you to configure the redstone monitoring side
+-- on first run, then saves it to the file "rc-RedIn". You can change
+-- which side is listening after the first run by either deleting or
+-- editing "rc-RedIn". if you don't wish to use an external power bank,
+-- then you can simply set up the redstone output with a reactor
+-- redstone port.
 
 reactors = {peripheral.find("BigReactors-Reactor")}
 reactor = reactors[1]
 redSide = nil
+secs = 0
 -------------------------functions----------------------------
 function isRedSideValid(uInput)
 	local validSides = {"left", "right", "front", "back"}
@@ -48,7 +59,6 @@ if fs.exists("rc-RedIn") == false then
 else
 	local fh = fs.open("rc-RedIn", "r")
 	readConf = fh.readLine()
-	--print(redSide)
 	fh.close()
 
 	if isRedSideValid(readConf) == true then
@@ -65,7 +75,7 @@ if reactor ~= nil then
 		print("Reactor was found, but is not functional")
 	end
 else
-	print("Reactor was not found")
+	error("Reactor was not found")
 end
 -----------------end-initialization-------------------------
 while true do
