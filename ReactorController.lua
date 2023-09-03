@@ -77,6 +77,9 @@ if reactor ~= nil then
 else
 	error("Reactor was not found")
 end
+
+reactor.setAllControlRodLevels(0)
+print("reactor initialization complete, monitoring power levels...")
 -----------------end-initialization-------------------------
 while true do
 	if redstone.getAnalogInput(redSide) < 8 and reactor.getActive() == false then
