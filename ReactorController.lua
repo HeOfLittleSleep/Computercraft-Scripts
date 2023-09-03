@@ -7,7 +7,7 @@ function isRedSideValid()
 	redSide = fh.readLine()
 	h.close()
 
-	valueFound = false
+	local valueFound = false
 	for i = 1, #list, 1 do
 		if list[i] == redSide then
 			valueFound = true
