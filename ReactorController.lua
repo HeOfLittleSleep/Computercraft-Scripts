@@ -3,7 +3,7 @@
 reactors = {peripheral.find("BigReactors-Reactor")}
 reactor = reactors[1]
 redSide = nil
-
+-------------------------functions----------------------------
 function isRedSideValid(uInput)
 	local validSides = {"left", "right", "front", "back"}
 	local valueFound = false
@@ -16,7 +16,8 @@ function isRedSideValid(uInput)
 
 	return valueFound
 end
-
+----------------------end-Functions---------------------------
+---------------------initialization---------------------------
 term.clear()
 if fs.exists("rc-RedIn") == false then
 	term.setCursorPos(1, 1)
@@ -66,3 +67,4 @@ if reactor ~= nil then
 else
 	print("Reactor was not found")
 end
+-----------------end-initialization-------------------------
