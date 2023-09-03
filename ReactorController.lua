@@ -18,9 +18,7 @@ function isRedSideValid(uInput)
 end
 
 term.clear()
-if
-	fs.exists("rc-RedIn") == false  --checks if file exists
-then
+if fs.exists("rc-RedIn") == false then
 	term.setCursorPos(1, 1)
 	print("Define which side to monitor for redstone power.")
 	print("  Options are: front, back, left, or right")
