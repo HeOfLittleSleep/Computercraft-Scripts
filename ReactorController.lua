@@ -1,8 +1,8 @@
 --program that will monitor and regulate a big reactor
 
-redSide = nil
 reactors = {peripheral.find("BigReactors-Reactor")}
 reactor = reactors[1]
+redSide = nil
 
 function isRedSideValid(uInput)
 	local validSides = {"left", "right", "front", "back"}
@@ -60,7 +60,6 @@ end
 if reactor ~= nil then
 	if reactor.mbIsAssembled() then
 		print("reactor was found!")
-		print(redstone.getAnalogInput(redSide))
 	else
 		print("Reactor was found, but is not functional")
 	end
