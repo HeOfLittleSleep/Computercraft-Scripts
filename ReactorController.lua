@@ -68,3 +68,17 @@ else
 	print("Reactor was not found")
 end
 -----------------end-initialization-------------------------
+while true do
+	if redstone.getAnalogInput(redSide) < 8 and reactor.getActive() == false then
+		reactor.setActive(true)
+		print("energy storage levels are low after "..secs.." seconds. Activating reactor until full")
+		secs = 0
+	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 100)
+	and reactor.getActive() == true then
+		reactor.setActive(false)
+		print("enrgy storage is filled after "..secs.." seconds, deactivating reactor")
+		secs = 0
+	end
+	sleep(1)
+	secs = secs + 1
+end
