@@ -46,9 +46,15 @@ if fs.exists("rc-RedIn") == false then
 	term.setCursorPos(1, 1)
 else
 	local fh = fs.open("rc-RedIn", "r")
-	redSide = fh.readLine()
-	print(redSide)
-	h.close()
+	readConf = fh.readLine()
+	--print(redSide)
+	fh.close()
+
+	if isRedSideValid(readConf) == true then
+		redSide = readConf	
+	else
+		error("\nInvalid Config data. Check rc-RedIn")
+	end
 end
 
 if redSide ~= nil then
