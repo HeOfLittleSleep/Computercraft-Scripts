@@ -4,16 +4,12 @@ redSide = nil
 reactors = {peripheral.find("BigReactors-Reactor")}
 reactor = reactors[1]
 
-function isRedSideValid()
-	validSides = {"left", "right", "front", "back"}
-
-	local fh = fs.open("rc-RedIn", "r")
-	redSide = fh.readLine()
-	h.close()
-
+function isRedSideValid(uInput)
+	local validSides = {"left", "right", "front", "back"}
 	local valueFound = false
+
 	for i = 1, #list, 1 do
-		if list[i] == redSide then
+		if list[i] == uInput then
 			valueFound = true
 		end
 	end
