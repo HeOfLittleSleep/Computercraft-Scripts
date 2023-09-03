@@ -8,8 +8,8 @@ function isRedSideValid(uInput)
 	local validSides = {"left", "right", "front", "back"}
 	local valueFound = false
 
-	for i = 1, #list, 1 do
-		if list[i] == uInput then
+	for i = 1, #validSides, 1 do
+		if validSides[i] == uInput then
 			valueFound = true
 		end
 	end
@@ -32,22 +32,15 @@ if fs.exists("rc-RedIn") == false then
 	term.setCursorPos(14, 10)
 	input = read()
 
-	if input == "left" or
-	input == "right" or
-	input == "front" or
-	input == "back" then
-		fs.open("rc-RedIn", "w")
-		local fh = fs.open("rc-RedIn", "a")
-		h.flush()
-		h.writeLine(input)
-		h.close()
-
+	if isRedSideValid(input) == true then
 		redSide = input
+		local fh = fs.open("rc-RedIn", "a")
+		fh.flush()
+		fh.writeLine(input)
+		fh.close()
 	else
 		error("Invalid input submited. Run program again")
 	end
-
-
 
 	term.clear()
 	term.setCursorPos(1, 1)
