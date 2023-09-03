@@ -57,19 +57,8 @@ else
 	end
 end
 
-if redSide ~= nil then
-	--redstone.setOutput(redSide, true)
-	print("redstone monitor side was set to "..redSide)
-else
-	error("data read from config was NIL")
-end
-
-if
-	reactor ~= nil
-then
-	if
-		reactor.mbIsAssembled()
-	then
+if reactor ~= nil then
+	if reactor.mbIsAssembled() then
 		print("reactor was found!")
 		print(redstone.getAnalogInput(redSide))
 	else
