@@ -7,3 +7,10 @@
 -- ks.kill(hostname) will send a kill signal over rednet to the
 -- specified hostname.
 
+function run(script, rednetID)
+	
+end
+
+function kill(remoteID)
+	
+end
