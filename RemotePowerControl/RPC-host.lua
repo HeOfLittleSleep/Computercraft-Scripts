@@ -42,7 +42,7 @@ while true do
 	elseif msg == "q" then  -- query power status
 		rednet.send(id, "redstone status is: "..tostring(redstone.getOutput(redOutSide)), "RPC")
 		print("status queried by client: "..id)
-	else
+	else                    -- returns an error if none of the previous ifs execute
 		rednet.send(id, "invalid input received", "RPC")
 		print("invalid input received from client: "..id)
 	end
