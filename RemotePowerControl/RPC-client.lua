@@ -17,7 +17,14 @@ else
 	messageToSend = tArgs[2]
 end
 
-rednet.open("back")  --change 'back' to whatever side the modem is on
+sides = {"top","back","left","right","bottom","front"}
+for i=1, #sides do
+	if peripheral.getType(sides[i]) == "modem" then
+		mside = sides[i]
+		break
+	end
+end
+rednet.open(mside)
 rednet.host("RPC", "client-PC")  --be sure to change "client-PC" to whatever you want
                                  --this computer's hostname to be
 if rednet.lookup("RPC", hostname) == nil then  --checks that hostname is valid

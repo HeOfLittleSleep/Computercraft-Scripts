@@ -1,7 +1,14 @@
 --this script will contimually wait for messages from a client computer and will
 --change the redstone output accordingly. works best if you name the file startup.lua.
 
-rednet.open("top")  --replace top with whatever side the modem is on
+sides = {"top","back","left","right","bottom","front"}
+for i=1, #sides do
+	if peripheral.getType(sides[i]) == "modem" then
+		mside = sides[i]
+		break
+	end
+end
+rednet.open(mside)
 rednet.host("RPC", "host-pc")  --be sure to change "host-pc" to whatever you want
                                    --this computer's hostname to be
 
