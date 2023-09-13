@@ -1,0 +1,7 @@
+killswitch notes
+****************
+
+multishell is being a pain, don't understand it enough
+
+considering having the api wait for an OS.pullEvent with the parallel API... maybe even just rednet.receive in parallel
+
