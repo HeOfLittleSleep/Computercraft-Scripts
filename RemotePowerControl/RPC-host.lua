@@ -1,7 +1,9 @@
 --this script will contimually wait for messages from a client computer and will
 --change the redstone output accordingly. works best if you name the file startup.lua.
 
-sides = {"top","back","left","right","bottom","front"} -- this block iterates through each side of
+redOutSide = "right"  -- This variable determines which side the computer will output the redstone signal.
+                      -- Option for this variable are:  front, back, top, bottom, left, or right
+sides = {"top","back","left",redOutSide,"bottom","front"} -- this block iterates through each side of
 for i=1, #sides do                                     -- the computer find a modem, and opens rednet 
 	if peripheral.getType(sides[i]) == "modem" then    -- on the first side that it finds one on
 		mside = sides[i]
@@ -20,25 +22,25 @@ while true do
 	--It also sneds a confirmation back to the sender and prints the completed
 	--operation and the id of the computer that sent the command
 	if msg == "0" then  -- set power to off
-		redstone.setOutput("right", false)
+		redstone.setOutput(redOutSide, false)
 		rednet.send(id, "redstone output has been turned off", "RPC")
 		print("redstone output has been turned off by client: "..id)
 	elseif msg == "1" then  --set power to on
-		redstone.setOutput("right", true)
+		redstone.setOutput(redOutSide, true)
 		rednet.send(id, "redstone output has been turned on", "RPC")
 		print("redstone output has been turned on by client: "..id)
 	elseif msg == "toggle" then  -- toggle power status
-		if redstone.getOutput("right") == false then
-			redstone.setOutput("right", true)
+		if redstone.getOutput(redOutSide) == false then
+			redstone.setOutput(redOutSide, true)
 			rednet.send(id, "redstone output has been turned on", "RPC")
 			print("redstone output has been turned on by client: "..id)
 		else
-			redstone.setOutput("right", false)
+			redstone.setOutput(redOutSide, false)
 			rednet.send(id, "redstone output has been turned off", "RPC")
 			print("redstone output has been turned off by client: "..id)
 		end
 	elseif msg == "q" then  -- query power status
-		rednet.send(id, "redstone status is: "..tostring(redstone.getOutput("right")), "RPC")
+		rednet.send(id, "redstone status is: "..tostring(redstone.getOutput(redOutSide)), "RPC")
 		print("status queried by client: "..id)
 	else
 		rednet.send(id, "invalid input received", "RPC")
