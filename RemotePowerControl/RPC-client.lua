@@ -17,9 +17,9 @@ else
 	messageToSend = tArgs[2]
 end
 
-sides = {"top","back","left","right","bottom","front"}
-for i=1, #sides do
-	if peripheral.getType(sides[i]) == "modem" then
+sides = {"top","back","left","right","bottom","front"} -- this block iterates through each side of
+for i=1, #sides do                                     -- the computer find a modem, and opens rednet 
+	if peripheral.getType(sides[i]) == "modem" then    -- on the first side that it finds one on
 		mside = sides[i]
 		break
 	end
