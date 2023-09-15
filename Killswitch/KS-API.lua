@@ -8,8 +8,10 @@
 -- specified hostname.
 
 function run(script, rednetID)
-	tabID = shell.openTab(script)
-	shell.switchTab(tabID)
+	os.run({multishell = multishell}, "prog", "arg1")  -- god I fucking hate this
+	print("launching ecternal program...")
+
+	tabID = multishell.launch(script)
 
 	local sides = {"top","back","left",redOutSide,"bottom","front"} -- this block iterates through each side of
 	for i=1, #sides do                                     -- the computer find a modem, and opens rednet 
@@ -20,8 +22,19 @@ function run(script, rednetID)
 	end
 	rednet.open(mside)
 	rednet.host("KillSwitch", rednetID)
+
+	id, msg, proto = rednet.receive("KillSwitch")
+	if msg == "kys" then  -- set power to off
+		multishell.setFocus(tabID)
+		os.queueEvent(shell.exit())
+		sleep(2)
+		error("running program was terminated by computer "..id)
 	end
 
+end
+
+
+
 function kill(remoteID)
-	rednet.send
+	--rednet.send
 end
