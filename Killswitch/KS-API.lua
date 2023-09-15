@@ -8,9 +8,20 @@
 -- specified hostname.
 
 function run(script, rednetID)
-	
-end
+	tabID = shell.openTab(script)
+	shell.switchTab(tabID)
+
+	local sides = {"top","back","left",redOutSide,"bottom","front"} -- this block iterates through each side of
+	for i=1, #sides do                                     -- the computer find a modem, and opens rednet 
+		if peripheral.getType(sides[i]) == "modem" then    -- on the first side that it finds one on
+			mside = sides[i]
+			break
+		end
+	end
+	rednet.open(mside)
+	rednet.host("KillSwitch", rednetID)
+	end
 
 function kill(remoteID)
-	
+	rednet.send
 end
