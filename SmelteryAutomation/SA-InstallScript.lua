@@ -7,7 +7,6 @@ if input == "master" then
 	shell.run("pastebin get GjcRHtyC startup.lua")
 elseif input == "slave" then
 	shell.run("pastebin get bXpAsQL6 startup.lua")
-	shell.run("pastebin get GZYKvk0W SA-SlaveNode.lua")
 else
 	error("Bad Input. please run the program again.")
 end
