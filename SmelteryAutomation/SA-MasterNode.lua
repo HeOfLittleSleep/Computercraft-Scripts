@@ -1,26 +1,10 @@
-validNodeNum = false
-
-
-while validNodeNum == false do
-	term.clear()
-	term.setCursorPos(10, 8)
-	print("How many slave nodes are there?")
-	term.setCursorPos(24, 10)
-	print("[   ]")
-
-	term.setCursorPos(25, 10)
-	sNodes = tonumber(read())
-	if tonumber(sNodes) == nil or tonumber(sNodes) < 0 then
-		term.clear()
-		term.setCursorPos(16,10)
-		print("Bad Input Fuckwit!")
-		term.setCursorPos(14,11)
-		print("Try again in 5 seconds")
-		sleep(5)
-	else
-		validNodeNum = true
-	end	
-end
+term.clear()
+term.setCursorPos(1,1)
+print("Searching for available slave nodes...")
+fndNodes = {rednet.lookup("smelteryAuto")}
+sNodes = #fndNodes
+print("found "..sNodes.." slave nodes!\nContinuing in 3 seconds")
+sleep(3)
 
 while true do
 	term.clear()
@@ -60,7 +44,7 @@ while true do
 
 			if sNodes > 0 then
 				rednet.open("top")
-				rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer)
+				rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer, "smelteryAuto")
 				rednet.close("top")
 			end
 
