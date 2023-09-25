@@ -10,7 +10,10 @@ while true do
 	term.setCursorPos(1, 1)
 	print("Waiting for orders from Master node...")
 	id, msg = rednet.receive("smelteryAuto")
+	queue = msg[1]
+	timer = msg[2]
 
-	print(msg)
-	shell.run(msg)
+	print(queue)
+	print(timer)
+	--shell.run(msg)
 end

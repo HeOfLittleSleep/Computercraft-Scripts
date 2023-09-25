@@ -1,7 +1,9 @@
 term.clear()
 term.setCursorPos(1,1)
 print("Searching for available slave nodes...")
+rednet.open("top")
 fndNodes = {rednet.lookup("smelteryAuto")}
+rednet.close()
 sNodes = #fndNodes
 print("found "..sNodes.." slave nodes!\nContinuing in 3 seconds")
 sleep(3)
@@ -44,9 +46,12 @@ while true do
 			sQueue = math.floor(QueueTotal / (sNodes + 1))
 			mQueue = QueueTotal - (sQueue * (sNodes + 1)) + sQueue
 
+			msg = {sQueue, WaitTimer}
+
 			if sNodes > 0 then
 				rednet.open("top")
-				rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer, "smelteryAuto")
+				--rednet.broadcast("SA-SlaveNode "..sQueue.." "..WaitTimer, "smelteryAuto")
+				rednet.broadcast(msg, "smelteryAuto")
 				rednet.close("top")
 			end
 
