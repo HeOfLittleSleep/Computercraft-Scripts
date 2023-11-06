@@ -31,7 +31,7 @@ while true do
 		term.setCursorPos(9, 8)
 		print("Un-molten frequency (wait timer):")
 		term.setCursorPos(9, 9)
-		print("^(Add 2s for ingots, or 8s for blocks)")
+		print("^(Add 2s for ingots, or 12s for blocks)")
 		term.setCursorPos(24, 10)
 		print("[   ]")
 		term.setCursorPos(25, 10)
