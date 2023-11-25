@@ -15,8 +15,13 @@ reactor = reactors[1]
 redSide = nil
 secs = 0
 
-os.loadAPI("NTFY_P73.lua")
 NTFY_channel = "https://ntfy.sh/HOLS_MC-Alerts"
+
+ntfytitle = "Reactor state changed by computer "..os.getComputerLabel()
+nftytext = ""
+ntfytags = "radioactive,radioactive,radioactive"
+
+ntfyheaders = {["Tags"] = ntfytags ,["Title"] = ntfytitle}
 -------------------------functions----------------------------
 function isRedSideValid(uInput)
 	local validSides = {"left", "right", "front", "back"}
@@ -87,16 +92,16 @@ print("reactor initialization complete, monitoring power levels...")
 while true do
 	if redstone.getAnalogInput(redSide) < 8 and reactor.getActive() == false then
 		reactor.setActive(true)
-		alertMSG ="energy storage levels are low after "..secs.." seconds. Activating reactor until full"
-		print(alertMSG)
-		NTFY_P73.Notice(NTFY_channel, alertMSG)
+		nftytext ="energy storage levels are low after "..secs.." seconds. Activating reactor until full"
+		print(nftytext)
+		NTFY_P73.Notice(NTFY_channel, nftytext, ntfyheaders)
 		secs = 0
 	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 10000)
 	and reactor.getActive() == true then
 		reactor.setActive(false)
-		alertMSG = "enrgy storage is filled after "..secs.." seconds, deactivating reactor"
-		print(alertMSG)
-		NTFY_P73.Notice(NTFY_channel, alertMSG)
+		nftytext = "enrgy storage is filled after "..secs.." seconds, deactivating reactor"
+		print(nftytext)
+		NTFY_P73.Notice(NTFY_channel, nftytext, ntfyheaders)
 		secs = 0
 	end
 	sleep(1)
