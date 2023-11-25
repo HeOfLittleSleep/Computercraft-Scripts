@@ -84,12 +84,16 @@ print("reactor initialization complete, monitoring power levels...")
 while true do
 	if redstone.getAnalogInput(redSide) < 8 and reactor.getActive() == false then
 		reactor.setActive(true)
-		print("energy storage levels are low after "..secs.." seconds. Activating reactor until full")
+		alertMSG ="energy storage levels are low after "..secs.." seconds. Activating reactor until full"
+		print(alertMSG)
+		NTFY_P73.Notice(NTFY_channel, alertMSG)
 		secs = 0
 	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 1000)
 	and reactor.getActive() == true then
 		reactor.setActive(false)
-		print("enrgy storage is filled after "..secs.." seconds, deactivating reactor")
+		alertMSG = "enrgy storage is filled after "..secs.." seconds, deactivating reactor"
+		print(alertMSG)
+		NTFY_P73.Notice(NTFY_channel, alertMSG)
 		secs = 0
 	end
 	sleep(1)
