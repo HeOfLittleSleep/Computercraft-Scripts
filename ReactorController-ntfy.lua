@@ -14,6 +14,9 @@ reactors = {peripheral.find("BigReactors-Reactor")}
 reactor = reactors[1]
 redSide = nil
 secs = 0
+
+os.loadAPI("NTFY_P73.lua")
+NTFY_channel = "https://ntfy.sh/HOLS_MC-Alerts"
 -------------------------functions----------------------------
 function isRedSideValid(uInput)
 	local validSides = {"left", "right", "front", "back"}
@@ -88,7 +91,7 @@ while true do
 		print(alertMSG)
 		NTFY_P73.Notice(NTFY_channel, alertMSG)
 		secs = 0
-	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 1000)
+	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 10000)
 	and reactor.getActive() == true then
 		reactor.setActive(false)
 		alertMSG = "enrgy storage is filled after "..secs.." seconds, deactivating reactor"
