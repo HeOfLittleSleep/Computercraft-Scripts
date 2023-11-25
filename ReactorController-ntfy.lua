@@ -17,7 +17,7 @@ secs = 0
 
 NTFY_channel = "https://ntfy.sh/HOLS_MC-Alerts"
 
-ntfytitle = "Reactor state changed by computer "..os.getComputerLabel()
+ntfytitle = "Reactor state changed by computer "..os.getComputerID()
 nftytext = ""
 ntfytags = "radioactive,radioactive,radioactive"
 
