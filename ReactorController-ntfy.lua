@@ -99,7 +99,7 @@ while true do
 	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 10000)
 	and reactor.getActive() == true then
 		reactor.setActive(false)
-		nftytext = "enrgy storage is filled after "..secs.." seconds, deactivating reactor"
+		nftytext = "energy storage is filled after "..secs.." seconds, deactivating reactor"
 		print(nftytext)
 		NTFY_P73.Notice(NTFY_channel, nftytext, ntfyheaders)
 		secs = 0

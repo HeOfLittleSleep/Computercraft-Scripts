@@ -89,7 +89,7 @@ while true do
 	elseif reactor.getEnergyStored() > (reactor.getEnergyCapacity() - 10000)
 	and reactor.getActive() == true then
 		reactor.setActive(false)
-		print("enrgy storage is filled after "..secs.." seconds, deactivating reactor")
+		print("energy storage is filled after "..secs.." seconds, deactivating reactor")
 		secs = 0
 	end
 	sleep(1)
