@@ -1,6 +1,8 @@
 --this program will dig out and build a tree farm for use with https://pastebin.com/5hUAPTRE.
 --It will assume it has 30 saplings in slot 16 and 30 dirt blocks in slot 15.
 --Digs a 17x20 block hole multiple blokcs deep (depending on the section)
+--the block it is placed on is teh first block to be dug, after which the turtle will dig 
+--the rest of the 20 blocks forward, and 17 blocks to the right of the starting point
 
 function GoDig(distance)                             --this moves the turtle forward [distance] times and dig if there's a block infront of it.
 	print("DIGGING "..distance.." blocks forward")  --Good for moving without repeating turtle.forward 20 times
