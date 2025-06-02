@@ -67,3 +67,12 @@ fh.flush()
 fh.writeLine(textutils.serialise(data))
 fh.close()
 print("check inspect-output.txt for output")
+
+
+
+has_block, data = turtle.inspect()
+if data.tags["minecraft:logs"] then
+	print("This is a log!")
+else
+	print("This is not a log.")
+end
