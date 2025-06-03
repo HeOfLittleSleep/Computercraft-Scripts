@@ -26,7 +26,7 @@ end
 function QueryAboveBlockTags(query)                    --returns the block ID of the block above the turtle
 	isBlock, data = turtle.inspectUp()
 
-	if isBLock == true then
+	if isBlock == true then
 		return data.tags[query]
 	else
 		return false
@@ -36,7 +36,7 @@ end
 function QueryFrontBlockTags(query)                    --returns the block ID of the block above the turtle
 	isBlock, data = turtle.inspect()
 
-	if isBLock == true then
+	if isBlock == true then
 		return data.tags[query]
 	else
 		return false
@@ -46,7 +46,7 @@ end
 function GetAboveBlockId()                    --returns the block ID of the block above the turtle
 	isBlock, data = turtle.inspectUp()
 
-	if isBLock == true then
+	if isBlock == true then
 		return data.tags[query]
 	else
 		return false
@@ -62,7 +62,7 @@ end
 function QueryItemTags(query)                          --returns the item ID of the item in the item slot
 	local data = turtle.getItemDetail(turtle.getSelectedSlot(), true)   --selected by the turtle
 	
-	if not data == nil then
+	if data ~= nil then
 		return data.tags[query]
 	else
 		return false
@@ -72,7 +72,7 @@ end
 function DetectLeaves(number)                 --same as Go() except it checks for leaves in front of the turtle
 	for i = 1, number, 1 do                   --and breaks them to clear a path
 	
-		if QueryFrontBlockTags("minecraft:log") then
+		if QueryFrontBlockTags("minecraft:logs") then
 			HarvestTree()
 		elseif turtle.detect() == true then
 			turtle.dig()
@@ -87,7 +87,7 @@ function HarvestTree() -- This function instructs the
 	turtle.dig()       -- bot to chop down a tree when called
 	Go(1)
 	turtle.digDown()
-	while not QueryItemTags("minecraft:sapling") do
+	while QueryItemTags("minecraft:saplings") ~= true do
 		if SlotNum == 16 then
 			error("ran out of saplings")
 		else
@@ -98,7 +98,7 @@ function HarvestTree() -- This function instructs the
 	
 	turtle.placeDown()
 	
-	while not QueryAboveBlockTags("minecraft:leaves") and not QueryAboveBlockTags("ic2:leaves") and turtle.inspectUp() ~= false do
+	while QueryAboveBlockTags("minecraft:leaves") ~= true and turtle.inspectUp() ~= false do
 		turtle.digUp()
 		turtle.up()
 	end
@@ -164,6 +164,7 @@ while doLoop == true do
 	
 	print("Checking fuel levels")
 	Fuel()
+	turtle.select(SlotNum)
 	print("fuel levels nominal")
 	Go(1)
 	turtle.turnRight()
